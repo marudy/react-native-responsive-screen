@@ -1,6 +1,6 @@
 {
   "name": "react-native-responsive-screen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make React Native views responsive for all devices with the use of 2 simple methods.",
   "main": "./src/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "responsive-screen",
     "responsive"
   ],
-  "author":  "Tasos Maroudas <maroudasa@gmail.com> (https://github.com/marudy)",
+  "author": "Tasos Maroudas <maroudasa@gmail.com> (https://github.com/marudy)",
   "contributors": [
     "Tasos Maroudas <maroudasa@gmail.com> (https://github.com/marudy)",
     "Chrysa Kaia <kaia.chrysa@gmail.com> (https://github.com/ckaia)"
