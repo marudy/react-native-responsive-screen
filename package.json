@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/marudy/react-native-responsive-screen/issues"
   },
-  "homepage": "https://github.com/marudy/react-native-responsive-screen#readme"
+  "homepage": "https://github.com/marudy/react-native-responsive-screen#readme",
+  "peerDependencies": {
+    "react-native": "^0.45.1"
+  }
 }
