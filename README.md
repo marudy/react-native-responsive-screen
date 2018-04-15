@@ -8,6 +8,12 @@ Give it a try and make your life simpler!
 
 <img src="https://cdn-images-1.medium.com/max/800/1*BWpx3uRPlWByahoXA6M-BQ.jpeg" />
 
+# Inspiration
+
+As web developers we are familiar with CSS percentage values. Unfortunately, percentages are not fully supported in React Native, at least not yet. There are CSS properties that do not support percentage values at all, although they do in “normal” web development (i.e. margin, border-width, border-radius etc).
+
+This package provides a way to use percentages - the developer provides percentage stings as arguments and the methods calculate the “correct” independent pixel (dp) values for every different screen dynamically.
+
 # Installation
 
 `npm install react-native-responsive-screen --save`
