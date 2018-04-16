@@ -8,8 +8,7 @@ import { Dimensions, PixelRatio } from 'react-native';
  * @return {number}              The calculated dp depending on current device's screen width.
  */
 const widthPercentageToDP = widthPercent => {
-  // Always get the screen's width and not cache it within the app,
-  // because they may change (i.e. device rotation).
+  // Retrieve screen's width
   const screenWidth = Dimensions.get('window').width;
 
   // Parse string percentage input and convert it to number.
@@ -27,8 +26,7 @@ const widthPercentageToDP = widthPercent => {
  * @return {number}               The calculated dp depending on current device's screen height.
  */
 const heightPercentageToDP = heightPercent => {
-  // Always get the screen's height and not cache it within the app,
-  // because they may change (i.e. device rotation).
+  // Retrieve screen's height
   const screenHeight = Dimensions.get('window').height;
 
   // Parse string percentage input and convert it to number.
