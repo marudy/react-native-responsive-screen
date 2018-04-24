@@ -10,9 +10,9 @@ Give it a try and make your life simpler!
 
 # Inspiration
 
-As web developers we are familiar with CSS percentage values. Unfortunately, percentages are not fully supported in React Native, at least not yet. There are CSS properties that do not support percentage values at all, although they do in “normal” web development (i.e. margin, border-width, border-radius etc).
+As web developers we are familiar with CSS percentage values. Unfortunately, percentages are not fully supported in React Native, at least not yet. There are CSS properties that do not support percentage values at all, although they do in “normal” web development (i.e. `margin`, `border-width`, `border-radius` etc).
 
-This package provides a way to use percentages - the developer provides percentage stings as arguments and the methods calculate the “correct” independent pixel (dp) values for every different screen dynamically.
+This package provides a way to use percentages - the developer provides percentage strings as arguments and the methods calculate the “correct” independent pixel (dp) values for every different screen dynamically.
 
 # Installation
 
@@ -60,7 +60,7 @@ export default Login;
 
 # How do I know it works for all devices ?
 
-As mentioned in ["How to Develop Responsive UIs with React Native"](https://medium.com/building-with-react-native/how-to-develop-responsive-uis-with-react-native-1x03-a448097c9503) article, this solution is already in production apps and is tested with a set of Android, iOS emulators of different screen specs, in order to verify that we always have the same end result:
+As mentioned in ["How to Develop Responsive UIs with React Native"](https://medium.com/building-with-react-native/how-to-develop-responsive-uis-with-react-native-1x03-a448097c9503) article, this solution is already in production apps and is tested with a set of Android, iOS emulators of different screen specs, in order to verify that we always have the same end result.
 
 ## Example:
 The 4 blue tiles at the bottom half of the screen should take over 98% of the screen’s width in dp and 10% of the screen’s height in dp always:
