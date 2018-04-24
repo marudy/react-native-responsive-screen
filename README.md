@@ -2,7 +2,9 @@
 
 react-native-responsive-screen is a small library that provides 2 simple methods so that React Native developers can code their elements with responsive independent pixel (dp) values. No media queries needed.
 
-It can be easily combined with other CSS libraries for React Native, i.e. [styled components](https://www.styled-components.com/) and [Expo framework](https://expo.io/) as well.
+<b>UPDATE:</b> From version <b>1.1</b> onwards, it provides an optional third method for screen orienation detection and automatic rerendering according to new dimensions.
+
+It can be easily combined with other CSS libraries for React Native, i.e. [styled components](https://www.styled-components.com/) and [Expo framework](https://expo.io/) as well. Check out the [Usage](#usage) section below for more details.
 
 Give it a try and make your life simpler!
 
@@ -19,17 +21,19 @@ This package provides a way to use percentages - the developer provides percenta
 `npm install react-native-responsive-screen --save`
 
 # Usage
-```
+
+## 1. How to use with StyleSheet.create() and without orientation change support 
+```javascript
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {widthPercentageToDP, heightPercentageToDP} from 'react-native-responsive-screen';
 
 class Login extends Component {
-  this.state = {};
+  constructor(props) {
+    super(props);
+    
+    this.state = {};
+  }
 
   render() {
     return (
@@ -57,6 +61,107 @@ const styles = StyleSheet.create({
 
 export default Login;
 ```
+
+## 2. How to use with StyleSheet.create() and with orientation change support
+In odrer to detect orientation change, there are 2 major differences from the previous case:
+* we add a listener function in every screen that supports orientation change (and a remove listener function respectively)
+* we move the stylesheet creation inside the render function, so that the styles are recalculated whenever we detect an orientation change (and therefore trigger a rerender).
+
+When using this, make sure to monitor UI performance of your app in a real device on orienation change. Since the styles are calculated every time from scratch inside the render function, make sure it's nor affecting your performance, especially on complicated screens with many UI elements.
+
+```javascript
+import React, {Component} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+  listenOrientationChange,
+  removeOrientationListener
+} from 'react-native-responsive-screen';
+
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {};
+    
+    listenOrientationChange(this);
+  }
+  
+  componentWillUnMount() {
+    removeOrientationListener();
+  }
+
+  render() {
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1
+      },
+      textWrapper: {
+        height: heightPercentageToDP('70%'), // 70% of height device screen
+        width: widthPercentageToDP('80%')    // 80% of width device screen
+      },
+      myText: {
+        fontSize: heightPercentageToDP('5%') // End result looks like the provided UI mockup
+      }
+    });
+  
+    return (
+      <View style={styles.container}>
+        <View style={styles.textWrapper}>
+          <Text style={styles.myText}>Login</Text>
+        </View>
+      </View>
+    );
+  }
+}
+
+export default Login;
+```
+
+## 3. How to use with styled components
+Same logic applies as above in case you want to use the package with or without orientation change support. Below se show a sample setup with styled compoments and without orientation change support.
+
+```javascript
+import React, {Component} from 'react';
+import {widthPercentageToDP, heightPercentageToDP} from 'react-native-responsive-screen';
+import styled from 'styled-components/native';
+
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <Container>
+        <TextWrapper>
+          <Login>Login</Login>
+        </TextWrapper>
+      </Container>
+    );
+  }
+}
+
+const Container = styled.View`
+  flex: 1;
+`;
+
+const TextWrapper = styled.View`
+  height: heightPercentageToDP('70%'); // 70% of height device screen
+  width: widthPercentageToDP('80%');   // 80% of width device screen
+`;
+
+const Login = styled.Text`
+  font-size: heightPercentageToDP('5%') // End result looks like the provided UI mockup
+`;
+
+export default Login;
+```
+
+
 
 # How do I know it works for all devices ?
 
