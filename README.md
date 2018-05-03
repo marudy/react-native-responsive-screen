@@ -125,7 +125,7 @@ Same logic applies as above in case you want to use the package with or without 
 ```javascript
 import React, {Component} from 'react';
 import {widthPercentageToDP, heightPercentageToDP} from 'react-native-responsive-screen';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 class Login extends Component {
   constructor(props) {
@@ -150,12 +150,12 @@ const Container = styled.View`
 `;
 
 const TextWrapper = styled.View`
-  height: heightPercentageToDP('70%'); // 70% of height device screen
-  width: widthPercentageToDP('80%');   // 80% of width device screen
+  height: ${heightPercentageToDP('70%')}; // 70% of height device screen
+  width: ${widthPercentageToDP('80%')};   // 80% of width device screen
 `;
 
 const Login = styled.Text`
-  font-size: heightPercentageToDP('5%') // End result looks like the provided UI mockup
+  font-size: ${heightPercentageToDP('5%')}; // End result looks like the provided UI mockup
 `;
 
 export default Login;
