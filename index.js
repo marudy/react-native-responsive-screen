@@ -2,10 +2,10 @@
 import { Dimensions, PixelRatio } from 'react-native';
 
 // Retrieve initial screen's width
-const screenWidth = Dimensions.get('window').width;
+let screenWidth = Dimensions.get('window').width;
 
 // Retrieve initial screen's height
-const screenHeight = Dimensions.get('window').height;
+let screenHeight = Dimensions.get('window').height;
 
 /**
  * Converts provided width percentage to independent pixel (dp).
