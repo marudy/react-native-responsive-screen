@@ -1,10 +1,10 @@
 # Contents
 * [The package](#react-native-responsive-screen)
-* [Inspiration](#Inspiration)
-* [Installation](#Installation)
-* [Usage](#Usage)
-* [How do I know it works for all devices ?](##Example)
-* [License](#License)
+* [Inspiration](#inspiration)
+* [Installation](#installation)
+* [Usage](#usage)
+* [How do I know it works for all devices ?](#example)
+* [License](#license)
 
 # react-native-responsive-screen
 
@@ -79,6 +79,6 @@ The 4 blue tiles at the bottom half of the screen should take over 98% of the sc
 ### Tablets
 <img src="https://cdn-images-1.medium.com/max/800/1*3uJUPxITidUJAokwB8BokQ.png" />
 
-# Licence
+# License
 
 MIT
