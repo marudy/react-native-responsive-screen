@@ -1,8 +1,8 @@
 # react-native-responsive-screen
 
-<i>react-native-responsive-screen</i> is a small library that provides 2 simple methods so that React Native developers can code their UI elements fully responsive. No media queries needed. It also provides an optional third method for screen orienation detection and automatic rerendering according to new dimensions.
+<i>react-native-responsive-screen</i> is a small library that provides 2 simple methods so that React Native developers can code their UI elements fully responsive. No media queries needed.
 
-It can be easily combined with other CSS libraries for React Native, i.e. [styled components](https://www.styled-components.com/) and [Expo framework](https://expo.io/) as well. Check out the [Usage](#usage) section below for more details.
+It also provides an optional third method for screen orienation detection and automatic rerendering according to new dimensions.
 
 Give it a try and make your life simpler!
 
@@ -10,9 +10,9 @@ Give it a try and make your life simpler!
 
 # Inspiration
 
-As web developers we are familiar with CSS percentage values. Unfortunately, percentages are not fully supported in React Native, at least not yet. There are CSS properties that do not support percentage values at all, although they do in “normal” web development (i.e. margin, border-width, border-radius etc).
+As web developers we are familiar with CSS percentage values. Unfortunately, percentages are not fully supported in React Native, at least not yet. I.E. `margin`, `border-width`, `border-radius` properties do not support percentage values at all.
 
-This package provides a way to use percentages - the developer provides percentage stings as arguments and the methods calculate the “correct” independent pixel (dp) values for every different screen dynamically.
+This package provides a way to use percentages; the developer provides percentage stings as arguments and the methods calculate the “correct” independent pixel (dp) values for every different screen dynamically.
 
 # Installation
 
