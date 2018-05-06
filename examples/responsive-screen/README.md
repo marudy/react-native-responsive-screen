@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
     height: hp('70%'), // 70% of height device screen
     width: wp('80%')   // 80% of width device screen
   },
-  myText: { fontSize: hp('5%') // End result looks like the provided UI mockup }
+  myText: {
+    fontSize: hp('5%') // End result looks like the provided UI mockup
+  }
 });
 
 export default Login;
