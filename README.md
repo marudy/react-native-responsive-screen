@@ -1,10 +1,10 @@
 # Contents
-* [The package](https://github.com/marudy/react-native-responsive-screen#react-native-responsive-screen)
-* [Inspiration](https://github.com/marudy/react-native-responsive-screen#Inspiration)
-* [Installation](https://github.com/marudy/react-native-responsive-screen#Installation)
-* [Usage](https://github.com/marudy/react-native-responsive-screen#Usage)
-* [How do I know it works for all devices ?](https://github.com/marudy/react-native-responsive-screen##Example)
-* [License](https://github.com/marudy/react-native-responsive-screen#License)
+* [The package](#react-native-responsive-screen)
+* [Inspiration](#Inspiration)
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [How do I know it works for all devices ?](##Example)
+* [License](#License)
 
 # react-native-responsive-screen
 
