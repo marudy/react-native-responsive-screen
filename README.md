@@ -49,87 +49,11 @@ export default Login;
 ```
 
 ## 2. How to use with StyleSheet.create() and with orientation change support
-In odrer to detect orientation change, there are 2 major differences from the previous case:
-* we add a listener function in every screen that supports orientation change (and a remove listener function respectively)
-* we move the stylesheet creation inside the render function, so that the styles are recalculated whenever we detect an orientation change (and therefore trigger a rerender).
+Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/tree/development/examples/responsive-screen-orientation-change)
 
-When using this, make sure to monitor UI performance of your app in a real device on orienation change. Since the styles are calculated every time from scratch inside the render function, make sure it's nor affecting your performance, especially on complicated screens with many UI elements.
-
-```javascript
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-  listenOrientationChange as lor,
-  removeOrientationListener as rol
-} from 'react-native-responsive-screen';
-
-class Login extends Component {
-  componentDidMount() {
-    lor(this);
-  }
-  
-  componentWillUnMount() {
-    rol();
-  }
-
-  render() {
-    const styles = StyleSheet.create({
-      container: { flex: 1 },
-      textWrapper: {
-        height: heightPercentageToDP('70%'), // 70% of height device screen
-        width: widthPercentageToDP('80%')    // 80% of width device screen
-      },
-      myText: { fontSize: heightPercentageToDP('5%') // End result looks like the provided UI mockup }
-    });
-  
-    return (
-      <View style={styles.container}>
-        <View style={styles.textWrapper}>
-          <Text style={styles.myText}>Login</Text>
-        </View>
-      </View>
-    );
-  }
-}
-
-export default Login;
-```
 
 ## 3. How to use with styled components
-Same logic applies as above in case you want to use the package with or without orientation change support. Below se show a sample setup with styled compoments and without orientation change support.
-
-```javascript
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import styled from 'styled-components';
-
-class Login extends Component {
-  render() {
-    return (
-      <Container>
-        <TextWrapper>
-          <Login>Login</Login>
-        </TextWrapper>
-      </Container>
-    );
-  }
-}
-
-const Container = styled.View`
-  flex: 1;
-`;
-
-const TextWrapper = styled.View`
-  height: ${hp('70%')};
-  width: ${wp('80%')};
-`;
-
-const Login = styled.Text`
-  font-size: ${hp('5%')};
-`;
-
-export default Login;
-```
-
+Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/tree/development/examples/responsive-screen-styled-components)
 
 
 # How do I know it works for all devices ?
