@@ -1,8 +1,8 @@
 # Contents
 * [The package](#react-native-responsive-screen)
-* [Inspiration](#inspiration)
 * [Installation](#installation)
 * [Usage](#usage)
+* [Examples](#examples)
 * [How do I know it works for all devices ?](#example)
 * [License](#license)
 
@@ -16,17 +16,20 @@ Give it a try and make your life simpler!
 
 <img src="https://cdn-images-1.medium.com/max/800/1*BWpx3uRPlWByahoXA6M-BQ.jpeg" />
 
-# Inspiration
-
-As web developers we are familiar with CSS percentage values. Unfortunately, percentages are not fully supported in React Native, at least not yet. I.E. `margin`, `border-width`, `border-radius` properties do not support percentage values at all.
-
-This package provides a way to use percentages; the developer provides percentage stings as arguments and the methods calculate the “correct” independent pixel (dp) values for every different screen dynamically.
-
 # Installation
 
 `npm install react-native-responsive-screen --save`
 
 # Usage
+* After the package has installed, when application loads (in real device and/or emulator), it detects the screen's width and height. I.e. for Samsung A5 2017 model it detects `width: 360DP` and `height: 640DP` (these are the values without taking into account the device's scale factor).
+* The package exposes 2 basic methods: `widthPercentageToDP` and `heightPercentageToDP`. Their names essentially mean that you can supply a "percentage like" string value to each method and it will return the DP (indipendent pixel) that correspond to the supplied percentage of current screen's width/height respectivelly. I.e. for Samsung A5 2017, if we supply to a CSS box: `width: widthPercentageToDP('53%')`, the rendered style will be `width: 190.8` DP. Check example number 1 for how to use them.
+* Methods `widthPercentageToDP` and `heightPercentageToDP` can be used for any style (CSS) property that accepts DP as value. DP values are the ones of type `number` over the props mentioned in RN docs: [View style props](https://facebook.github.io/react-native/docs/view-style-props.html), [Text style props](https://facebook.github.io/react-native/docs/text-style-props.html), [Image style props](https://facebook.github.io/react-native/docs/image-style-props.html), [Layout props](https://facebook.github.io/react-native/docs/layout-props.html) and [Shadow props](https://facebook.github.io/react-native/docs/shadow-props.html). Use the exposed methods for all of the type `number` properties used in your app in order to make your app fully responsive for all screen sizes.
+* The package methods can be used with or without flex depending on what you want to do and how you choose to implement it.
+* The suggested approach is to start developing from larger screens (i.e. tablets). That way you are less prone to forget adding responsive values for all properties of type `number`. In any case, when your screen development is done, you should test it over a big range of different screens as shown below in the [How do I know it works for all devices ?](#example) section.
+* There are 2 more methods to use if you want to support responsiveness along with orientation change. These are `listenOrientationChange` and `removeOrientationListener`. To see how to use them, check example number 3.
+* You can use this package along with `styled-components`. To see how to do that, check example number 2.
+
+# Examples
 
 ## 1. How to use with StyleSheet.create() and without orientation change support 
 ```javascript
