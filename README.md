@@ -60,13 +60,15 @@ const styles = StyleSheet.create({
 
 export default Login;
 ```
+You can find a working example of this over the [related example repository](https://github.com/marudy/react-native-responsive-screen/blob/master/examples/responsive-screen/README.md)
+
 
 ## 2. How to use with StyleSheet.create() and with orientation change support
-Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/tree/development/examples/responsive-screen-orientation-change)
+Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/blob/master/examples/responsive-screen-orientation-change/README.md)
 
 
 ## 3. How to use with styled components
-Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/tree/development/examples/responsive-screen-styled-components)
+Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/blob/master/examples/responsive-screen-styled-components/README.md)
 
 
 # How do I know it works for all devices ?
