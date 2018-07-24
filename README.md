@@ -12,7 +12,9 @@
 
 It also provides an optional third method for screen orienation detection and automatic rerendering according to new dimensions.
 
-Give it a try and make your life simpler!
+Give it a try and make your life simpler! 
+
+[![npm version](https://badge.fury.io/js/react-native-responsive-screen.svg)](https://www.npmjs.com/package/react-native-responsive-screen)
 
 <img src="https://cdn-images-1.medium.com/max/800/1*BWpx3uRPlWByahoXA6M-BQ.jpeg" />
 
