@@ -8,13 +8,16 @@
 
 # react-native-responsive-screen
 
+[![npm version](https://badge.fury.io/js/react-native-responsive-screen.svg)](https://www.npmjs.com/package/react-native-responsive-screen)
+[![npm](https://img.shields.io/npm/dm/react-native-responsive-screen.svg)]()
+
 <i>react-native-responsive-screen</i> is a small library that provides 2 simple methods so that React Native developers can code their UI elements fully responsive. No media queries needed.
 
 It also provides an optional third method for screen orienation detection and automatic rerendering according to new dimensions.
 
 Give it a try and make your life simpler! 
 
-[![npm version](https://badge.fury.io/js/react-native-responsive-screen.svg)](https://www.npmjs.com/package/react-native-responsive-screen)
+Check out [this medium article](https://medium.com/react-native-training/build-responsive-react-native-views-for-any-device-and-support-orientation-change-1c8beba5bc23) to see the power of the library! 🚀
 
 <img src="https://cdn-images-1.medium.com/max/800/1*BWpx3uRPlWByahoXA6M-BQ.jpeg" />
 
