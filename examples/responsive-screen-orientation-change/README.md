@@ -19,7 +19,7 @@ class Login extends Component {
     lor(this);
   }
   
-  componentWillUnMount() {
+  componentWillUnmount() {
     rol();
   }
 
