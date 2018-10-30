@@ -5,6 +5,7 @@
 * [Examples](#examples)
 * [How do I know it works for all devices ?](#example)
 * [License](#license)
+* [Pull Requests](#Pull)
 
 # react-native-responsive-screen
 
@@ -95,3 +96,7 @@ The 4 blue tiles at the bottom half of the screen should take over 98% of the sc
 # License
 
 MIT
+
+# Pull Requests
+
+Pull requests are welcome! Please make the PR to `development` branch though and not `master`. Thanks.
