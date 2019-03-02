@@ -36,6 +36,9 @@ Check out [this medium article](https://medium.com/react-native-training/build-r
 * There are 2 more methods to use if you want to support responsiveness along with orientation change. These are `listenOrientationChange` and `removeOrientationListener`. To see how to use them, check example number 3.
 * You can use this package along with `styled-components`. To see how to do that, check example number 2.
 
+# Update 🚀
+* `widthPercentageToDP` and `heightPercentageToDP` methods accept numeric values now.
+
 # Examples
 
 ## 1. How to use with StyleSheet.create() and without orientation change support 
