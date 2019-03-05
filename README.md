@@ -36,8 +36,8 @@ Check out [this medium article](https://medium.com/react-native-training/build-r
 * There are 2 more methods to use if you want to support responsiveness along with orientation change. These are `listenOrientationChange` and `removeOrientationListener`. To see how to use them, check example number 3.
 * You can use this package along with `styled-components`. To see how to do that, check example number 2.
 
-# Update 🚀
-* `widthPercentageToDP` and `heightPercentageToDP` methods accept numeric values now.
+# Updates 🚀
+* `widthPercentageToDP` and `heightPercentageToDP` methods accept numeric values as well from version 1.2.1 onwards. That being said a width of 53% can now be written both `width: widthPercentageToDP('53%')` and `width: widthPercentageToDP(53)`.
 
 # Examples
 
