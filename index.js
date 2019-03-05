@@ -15,7 +15,7 @@ let screenHeight = Dimensions.get('window').height;
  */
 const widthPercentageToDP = widthPercent => {
   // Parse string percentage input and convert it to number.
-  const elemWidth = parseFloat(widthPercent);
+  const elemWidth = typeof widthPercent === "number" ? widthPercent : parseFloat(widthPercent);
 
   // Use PixelRatio.roundToNearestPixel method in order to round the layout
   // size (dp) to the nearest one that correspons to an integer number of pixels.
@@ -30,7 +30,7 @@ const widthPercentageToDP = widthPercent => {
  */
 const heightPercentageToDP = heightPercent => {
   // Parse string percentage input and convert it to number.
-  const elemHeight = parseFloat(heightPercent);
+  const elemHeight = typeof heightPercent === "number" ? heightPercent : parseFloat(heightPercent);
 
   // Use PixelRatio.roundToNearestPixel method in order to round the layout
   // size (dp) to the nearest one that correspons to an integer number of pixels.
