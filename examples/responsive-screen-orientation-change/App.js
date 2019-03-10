@@ -10,11 +10,14 @@ import {
  
 export default class App extends React.Component {
   componentWillMount() {
-    listenOrientationChange(this);
+   // `listenOrientationChange` returns the handler method,
+   // consider store it to be pushed back when removing the listener.
+   this.orientationChangeHandler = listenOrientationChange(this);
   }
 
   componentWillUnMount() {
-    removeOrientationListener();
+    // Optionally path the original handler to be removed.
+    removeOrientationListener(this.orientationChangeHandler);
   }
 
   render() {

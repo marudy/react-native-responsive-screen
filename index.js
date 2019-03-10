@@ -47,16 +47,21 @@ const heightPercentageToDP = heightPercent => {
  *                      invoke setState method and trigger screen rerender (this.setState()).
  */
 const listenOrientationChange = that => {
-  Dimensions.addEventListener('change', newDimensions => {
+  const orientationChangeHandler = newDimensions => {
     // Retrieve and save new dimensions
     screenWidth = newDimensions.window.width;
     screenHeight = newDimensions.window.height;
-
+  
     // Trigger screen's rerender with a state update of the orientation variable
     that.setState({
       orientation: screenWidth < screenHeight ? 'portrait' : 'landscape'
     });
-  });
+  }
+  
+  Dimensions.addEventListener('change', orientationChangeHandler);
+
+  // Save this somewhere to path it back when removing the listener.
+  return orientationChangeHandler;
 };
 
 /**
@@ -65,7 +70,11 @@ const listenOrientationChange = that => {
  * listenOrientationChange function has been invoked. This should be done in order to
  * avoid adding new listeners every time the same component is re-mounted.
  */
-const removeOrientationListener = () => {
+const removeOrientationListener = orientationChangeHandler => {
+  // Remove the original handler if possible, otherwise path an empty function.
+  if (orientationChangeHandler) {
+    return Dimensions.removeEventListener('change', orientationChangeHandler);
+  }
   Dimensions.removeEventListener('change', () => {});
 };
 

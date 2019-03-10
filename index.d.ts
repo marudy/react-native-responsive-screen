@@ -3,6 +3,6 @@ declare module 'react-native-responsive-screen' {
 
   export function widthPercentageToDP(widthPercent: string | number): number;
   export function heightPercentageToDP(widthPercent: string | number): number;
-  export function listenOrientationChange(screenClassComponent: Component<any, any>): void;
-  export function removeOrientationListener(): void;
+  export function listenOrientationChange(screenClassComponent: Component<any, any>): (newDimensions: any) => void;
+  export function removeOrientationListener(orientationChangeHandler?: any): void;
 }
