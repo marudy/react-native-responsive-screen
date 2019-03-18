@@ -71,11 +71,11 @@ const listenOrientationChange = that => {
  * avoid adding new listeners every time the same component is re-mounted.
  */
 const removeOrientationListener = orientationChangeHandler => {
-  // Remove the original handler if possible, otherwise path an empty function.
+  // Warn if the original handler not passed.
   if (orientationChangeHandler) {
-    return Dimensions.removeEventListener('change', orientationChangeHandler);
+    console.warn('Please push back the original handler to be removed');
   }
-  Dimensions.removeEventListener('change', () => {});
+  return Dimensions.removeEventListener('change', orientationChangeHandler);
 };
 
 export {

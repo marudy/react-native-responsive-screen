@@ -16,7 +16,7 @@ export default class App extends React.Component {
   }
 
   componentWillUnMount() {
-    // Optionally path the original handler to be removed.
+    // Path the original handler to be removed.
     removeOrientationListener(this.orientationChangeHandler);
   }
 
