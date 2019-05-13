@@ -1,11 +1,15 @@
 // packages
-import { Dimensions, PixelRatio } from 'react-native';
+import { Dimensions, PixelRatio, StatusBar, Platform } from 'react-native';
 
 // Retrieve initial screen's width
 let screenWidth = Dimensions.get('window').width;
 
 // Retrieve initial screen's height
 let screenHeight = Dimensions.get('window').height;
+
+if(Platform.OS === "android"){
+  screenHeight -= (StatusBar.currentHeight || 0);
+}
 
 /**
  * Converts provided width percentage to independent pixel (dp).
@@ -38,7 +42,7 @@ const heightPercentageToDP = heightPercent => {
 };
 
 /**
- * Event listener function that detects orientation change (every time it occurs) and triggers 
+ * Event listener function that detects orientation change (every time it occurs) and triggers
  * screen rerendering. It does that, by changing the state of the screen where the function is
  * called. State changing occurs for a new state variable with the name 'orientation' that will
  * always hold the current value of the orientation after the 1st orientation change.
