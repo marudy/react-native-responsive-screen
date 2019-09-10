@@ -13,7 +13,7 @@ let screenHeight = Dimensions.get('window').height;
  *                               along with the percentage symbol (%).
  * @return {number}              The calculated dp depending on current device's screen width.
  */
-const widthPercentageToDP = widthPercent => {
+const wp = widthPercent => {
   // Parse string percentage input and convert it to number.
   const elemWidth = typeof widthPercent === "number" ? widthPercent : parseFloat(widthPercent);
 
@@ -28,7 +28,7 @@ const widthPercentageToDP = widthPercent => {
  *                                along with the percentage symbol (%).
  * @return {number}               The calculated dp depending on current device's screen height.
  */
-const heightPercentageToDP = heightPercent => {
+const hp = heightPercent => {
   // Parse string percentage input and convert it to number.
   const elemHeight = typeof heightPercent === "number" ? heightPercent : parseFloat(heightPercent);
 
@@ -69,9 +69,23 @@ const removeOrientationListener = () => {
   Dimensions.removeEventListener('change', () => {});
 };
 
+// deprecated
+const widthPercentageToDP = (widthPercent) => {
+  console.warn('widthPercentageToDP is deprecated and will be removed in the next major version. Use wp instead. ')
+  return wp(widthPercent)
+}
+
+// deprecated
+const heightPercentageToDP = (heightPercent) => {
+  console.warn('heightPercentageToDP is deprecated and will be removed in the next major version. Use hp instead. ')
+  return hp(heightPercent)
+}
+
 export {
+  wp,
+  hp,
+  listenOrientationChange,
+  removeOrientationListener,
   widthPercentageToDP,
   heightPercentageToDP,
-  listenOrientationChange,
-  removeOrientationListener
 };

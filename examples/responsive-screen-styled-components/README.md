@@ -3,7 +3,7 @@ This is an example repository that contains a sample setup of react-native-respo
 # Usage
 
 ```javascript
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {wp, hp} from 'react-native-responsive-screen';
 import styled from 'styled-components';
 
 class Login extends Component {
