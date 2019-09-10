@@ -1,7 +1,7 @@
 // packages
 import * as React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import {widthPercentageToDP, heightPercentageToDP} from 'react-native-responsive-screen';
+import {wp, hp} from 'react-native-responsive-screen';
  
 export default class App extends React.Component {
   render() {
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   responsiveBox: {
-    width: widthPercentageToDP('84.5%'),
-    height: heightPercentageToDP('17%'),
+    width: wp('84.5%'),
+    height: hp('17%'),
     borderWidth: 2,
     borderColor: 'orange',
     flexDirection: 'column',

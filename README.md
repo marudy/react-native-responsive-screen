@@ -28,22 +28,22 @@ Check out [this medium article](https://medium.com/react-native-training/build-r
 
 # Usage
 * After the package has installed, when application loads (in real device and/or emulator), it detects the screen's width and height. I.e. for Samsung A5 2017 model it detects `width: 360DP` and `height: 640DP` (these are the values without taking into account the device's scale factor).
-* The package exposes 2 basic methods: `widthPercentageToDP` and `heightPercentageToDP`. Their names essentially mean that you can supply a "percentage like" string value to each method and it will return the DP (indipendent pixel) that correspond to the supplied percentage of current screen's width/height respectivelly. I.e. for Samsung A5 2017, if we supply to a CSS box: `width: widthPercentageToDP('53%')`, the rendered style will be `width: 190.8` DP. Check example number 1 for how to use them.
-* Methods `widthPercentageToDP` and `heightPercentageToDP` can be used for any style (CSS) property that accepts DP as value. DP values are the ones of type `number` over the props mentioned in RN docs: [View style props](https://facebook.github.io/react-native/docs/view-style-props.html), [Text style props](https://facebook.github.io/react-native/docs/text-style-props.html), [Image style props](https://facebook.github.io/react-native/docs/image-style-props.html), [Layout props](https://facebook.github.io/react-native/docs/layout-props.html) and [Shadow props](https://facebook.github.io/react-native/docs/shadow-props.html). Use the exposed methods for all of the type `number` properties used in your app in order to make your app fully responsive for all screen sizes.
-* You can also provide decimal values to these 2 methods, i.e. `font-size: widthPercentageToDP('3.75%')`.
+* The package exposes 2 basic methods: `wp` and `hp`. You can supply a "percentage like" string value to each method and it will return the DP (indipendent pixel) that correspond to the supplied percentage of current screen's width/height respectivelly. I.e. for Samsung A5 2017, if we supply to a CSS box: `width: wp('53%')`, the rendered style will be `width: 190.8` DP. Check example number 1 for how to use them.
+* Methods `wp` and `hp` can be used for any style (CSS) property that accepts DP as value. DP values are the ones of type `number` over the props mentioned in RN docs: [View style props](https://facebook.github.io/react-native/docs/view-style-props.html), [Text style props](https://facebook.github.io/react-native/docs/text-style-props.html), [Image style props](https://facebook.github.io/react-native/docs/image-style-props.html), [Layout props](https://facebook.github.io/react-native/docs/layout-props.html) and [Shadow props](https://facebook.github.io/react-native/docs/shadow-props.html). Use the exposed methods for all of the type `number` properties used in your app in order to make your app fully responsive for all screen sizes.
+* You can also provide decimal values to these 2 methods, i.e. `font-size: wp('3.75%')`.
 * The package methods can be used with or without flex depending on what you want to do and how you choose to implement it.
 * The suggested approach is to start developing from larger screens (i.e. tablets). That way you are less prone to forget adding responsive values for all properties of type `number`. In any case, when your screen development is done, you should test it over a big range of different screens as shown below in the [How do I know it works for all devices ?](#example) section.
 * There are 2 more methods to use if you want to support responsiveness along with orientation change. These are `listenOrientationChange` and `removeOrientationListener`. To see how to use them, check example number 3.
 * You can use this package along with `styled-components`. To see how to do that, check example number 2.
 
 # Updates 🚀
-* `widthPercentageToDP` and `heightPercentageToDP` methods accept numeric values as well from version 1.2.1 onwards. That being said a width of 53% can now be written both `width: widthPercentageToDP('53%')` and `width: widthPercentageToDP(53)`.
+* `wp` and `hp` methods accept numeric values as well from version 1.2.1 onwards. That being said a width of 53% can now be written both `width: wp('53%')` and `width: wp(53)`.
 
 # Examples
 
 ## 1. How to use with StyleSheet.create() and without orientation change support 
 ```javascript
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {wp, hp} from 'react-native-responsive-screen';
 
 class Login extends Component {
   render() {

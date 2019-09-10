@@ -2,7 +2,7 @@ This is an example repository that contains a sample setup of `react-native-resp
 
 # Usage
 ```javascript
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {wp, hp} from 'react-native-responsive-screen';
 
 class Login extends Component {
   render() {

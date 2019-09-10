@@ -8,8 +8,8 @@ In order to detect orientation change, there are 2 differences from the simple c
 
 ```javascript
 import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
+  wp,
+  hp,
   listenOrientationChange as lor,
   removeOrientationListener as rol
 } from 'react-native-responsive-screen';

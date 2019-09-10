@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import {
-  widthPercentageToDP,
-  heightPercentageToDP,
+  wp,
+  hp,
   listenOrientationChange,
   removeOrientationListener
 } from 'react-native-responsive-screen';
@@ -26,8 +26,8 @@ export default class App extends React.Component {
         justifyContent: 'center',
       },
       responsiveBox: {
-        width: widthPercentageToDP('84.5%'),
-        height: heightPercentageToDP('17%'),
+        width: wp('84.5%'),
+        height: hp('17%'),
         borderWidth: 2,
         borderColor: 'orange',
         flexDirection: 'column',
