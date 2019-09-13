@@ -3,7 +3,7 @@
 * [Instalação](#instalação)
 * [Utilização](#utilização)
 * [Exemplos](#exemplos)
-* [Como eu sei que funciona em todos os dispositivos ?](#example)
+* [Como eu sei que funciona em todos os dispositivos ?](#exemplos)
 * [Licença](#licença)
 * [Pull Requests](#pull)
 
@@ -96,7 +96,7 @@ Os quatro ladrilhos azuis na metade inferior da tela devem ocupar 98% da largura
 ### Tablets
 <img src="https://cdn-images-1.medium.com/max/800/1*3uJUPxITidUJAokwB8BokQ.png" />
 
-# License
+# Licença
 
 MIT
 
