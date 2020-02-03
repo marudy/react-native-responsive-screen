@@ -1,6 +1,4 @@
-/*
-@flow
-*/
+// @flow
 
 import type { Component } from "react";
 
