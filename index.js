@@ -13,13 +13,13 @@ let screenHeight = Dimensions.get('window').height;
  *                               along with the percentage symbol (%).
  * @return {number}              The calculated dp depending on current device's screen width.
  */
-const widthPercentageToDP = (widthPercent) => {
-	// Parse string percentage input and convert it to number.
-	const elemWidth = typeof widthPercent === 'number' ? widthPercent : parseFloat(widthPercent);
+const widthPercentageToDP = widthPercent => {
+  // Parse string percentage input and convert it to number.
+  const elemWidth = typeof widthPercent === "number" ? widthPercent : parseFloat(widthPercent);
 
-	// Use PixelRatio.roundToNearestPixel method in order to round the layout
-	// size (dp) to the nearest one that correspons to an integer number of pixels.
-	return PixelRatio.roundToNearestPixel(screenWidth * elemWidth / 100);
+  // Use PixelRatio.roundToNearestPixel method in order to round the layout
+  // size (dp) to the nearest one that correspons to an integer number of pixels.
+  return PixelRatio.roundToNearestPixel(screenWidth * elemWidth / 100);
 };
 
 /**
@@ -28,13 +28,13 @@ const widthPercentageToDP = (widthPercent) => {
  *                                along with the percentage symbol (%).
  * @return {number}               The calculated dp depending on current device's screen height.
  */
-const heightPercentageToDP = (heightPercent) => {
-	// Parse string percentage input and convert it to number.
-	const elemHeight = typeof heightPercent === 'number' ? heightPercent : parseFloat(heightPercent);
+const heightPercentageToDP = heightPercent => {
+  // Parse string percentage input and convert it to number.
+  const elemHeight = typeof heightPercent === "number" ? heightPercent : parseFloat(heightPercent);
 
-	// Use PixelRatio.roundToNearestPixel method in order to round the layout
-	// size (dp) to the nearest one that correspons to an integer number of pixels.
-	return PixelRatio.roundToNearestPixel(screenHeight * elemHeight / 100);
+  // Use PixelRatio.roundToNearestPixel method in order to round the layout
+  // size (dp) to the nearest one that correspons to an integer number of pixels.
+  return PixelRatio.roundToNearestPixel(screenHeight * elemHeight / 100);
 };
 
 /**
@@ -46,24 +46,24 @@ const heightPercentageToDP = (heightPercent) => {
  * @param {object} that Screen's class component this variable. The function needs it to
  *                      invoke setState method and trigger screen rerender (this.setState()).
  */
-const listenOrientationChange = (that) => {
-	Dimensions.addEventListener('change', (newDimensions) => {
-		// Retrieve and save new dimensions
-		screenWidth = newDimensions.window.width;
-		screenHeight = newDimensions.window.height;
+const listenOrientationChange = that => {
+  Dimensions.addEventListener('change', newDimensions => {
+    // Retrieve and save new dimensions
+    screenWidth = newDimensions.window.width;
+    screenHeight = newDimensions.window.height;
 
-		// Trigger screen's rerender with a state update of the orientation variable
-		// that.setState({
-		//   orientation: screenWidth < screenHeight ? 'portrait' : 'landscape'
-		// });
-		if (that.setState == null) {
+    // Trigger screen's rerender with a state update of the orientation variable
+    // that.setState({
+    //   orientation: screenWidth < screenHeight ? 'portrait' : 'landscape'
+    // });
+    if (that.setState == null) {
 			that(screenWidth < screenHeight ? 'portrait' : 'landscape');
 		} else {
 			that.setState({
 				orientation: screenWidth < screenHeight ? 'portrait' : 'landscape'
 			});
 		}
-	});
+  });
 };
 
 /**
@@ -73,7 +73,12 @@ const listenOrientationChange = (that) => {
  * avoid adding new listeners every time the same component is re-mounted.
  */
 const removeOrientationListener = () => {
-	Dimensions.removeEventListener('change', () => {});
+  Dimensions.removeEventListener('change', () => {});
 };
 
-export { widthPercentageToDP, heightPercentageToDP, listenOrientationChange, removeOrientationListener };
+export {
+  widthPercentageToDP,
+  heightPercentageToDP,
+  listenOrientationChange,
+  removeOrientationListener
+};
