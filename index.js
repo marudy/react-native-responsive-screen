@@ -2,10 +2,16 @@
 import { Dimensions, PixelRatio } from 'react-native';
 
 // Retrieve initial screen's width
-let screenWidth = Dimensions.get('window').width;
-
+const initialWidth = Dimensions.get('window').width;
 // Retrieve initial screen's height
-let screenHeight = Dimensions.get('window').height;
+const initialHeight = Dimensions.get('window').height;
+
+// added logic to fix bug where when landscape is not supported initial values were
+// being calculated incorrectly, this will have to be removed when landscape support is introduced.
+
+const isLandscape = initialWidth > initialHeight;
+let screenWidth = isLandscape ? initialHeight : initialWidth;
+let screenHeight = isLandscape ? initialWidth : initialHeight;
 
 /**
  * Converts provided width percentage to independent pixel (dp).
