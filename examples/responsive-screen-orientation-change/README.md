@@ -1,5 +1,15 @@
 This is an example repository that contains a sample setup of react-native-responsive-screen package with support of device orientation changes.
 
+# Setup
+
+1. Change working directory to the project:
+    - `cd examamples/responsive-screen-orientation-change`
+1. Install the dependencies:
+    - `npm install` 
+1. Run the app in the emulator/simulator:
+    - `npm start android`
+    - `npm start ios`
+
 # Usage
 
 In order to detect orientation change, there are 2 differences from the simple case:

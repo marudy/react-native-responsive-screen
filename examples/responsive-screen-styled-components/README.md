@@ -1,5 +1,15 @@
 This is an example repository that contains a sample setup of react-native-responsive-screen package with use of styled components.
 
+# Setup
+
+1. Change working directory to the project:
+    - `cd examamples/responsive-screen-styled-components`
+1. Install the dependencies:
+    - `npm install` 
+1. Run the app in the emulator/simulator:
+    - `npm start android`
+    - `npm start ios`
+
 # Usage
 
 ```javascript
