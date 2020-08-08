@@ -30,7 +30,7 @@ const Login () =>  {
   const [responsiveScreen, setResponsiveScreen] = useState();
 
   useEffect(() => {
-    loc(setResponsiveScreen);  // sets up when mounted
+    loc({setStateHook: setResponsiveScreen});  // sets up when mounted
     return () => rol();  // cleans up when unmounted
   }, []);
 
