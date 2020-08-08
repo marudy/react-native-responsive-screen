@@ -43,6 +43,8 @@ const heightPercentageToDP = heightPercent => {
  * called. State changing occurs for a new state variable with the name 'orientation' that will
  * always hold the current value of the orientation after the 1st orientation change.
  * Invoke it inside the screen's constructor or in componentDidMount lifecycle method.
+ * NOTE: If using expo, check the "orientation" setting in app.json/app.config.json
+ *       https://docs.expo.io/versions/v38.0.0/config/app/#orientation
  * @param {object} classComponent This Screen's class component this variable.
  *                                listenOrientationChange() needs it to invoke the class's setState
  *                                (this.setState()) method and trigger screen rerender.
@@ -61,10 +63,10 @@ const listenOrientationChange = ({classComponentThis = null, setStateHook = null
       orientation: screenWidth < screenHeight ? 'portrait' : 'landscape'
     };
 
-    // Trigger screen's rerender with a state update of the orientation variable
-    if (classComponentThis && ! setStateHook) {
+    // Trigger screen's re-render with a state update of the orientation variable
+    if (classComponentThis !== null && setStateHook === null) {
       classComponentThis.setState(orientation);
-    } else if (setStateHook && !classComponentThis) {
+    } else if (setStateHook === null && classComponentThis !== null) {
       setStateHook(orientation);
     } else {
       throw new Error("Must set only ONE of classComponentThis or setStateHook");
