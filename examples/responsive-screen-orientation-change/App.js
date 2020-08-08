@@ -7,10 +7,10 @@ import {
   listenOrientationChange,
   removeOrientationListener
 } from 'react-native-responsive-screen';
- 
+
 export default class App extends React.Component {
-  componentWillMount() {
-    listenOrientationChange(this);
+  componentDidMount() {
+    listenOrientationChange({classComponentThis: this});
   }
 
   componentWillUnMount() {
@@ -27,15 +27,16 @@ export default class App extends React.Component {
       },
       responsiveBox: {
         width: widthPercentageToDP('84.5%'),
-        height: heightPercentageToDP('17%'),
+        minHeight: heightPercentageToDP('17%'),
         borderWidth: 2,
         borderColor: 'orange',
         flexDirection: 'column',
-        justifyContent: 'space-around' 
+        justifyContent: 'space-around'
       },
       text: {
-        color: 'white'
-      }
+        color: 'white',
+        paddingHorizontal: widthPercentageToDP('10%'),
+      },
     });
 
     return (
