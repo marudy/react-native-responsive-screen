@@ -4,13 +4,15 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import {
   widthPercentageToDP,
   heightPercentageToDP,
+  currentOrientation,
   listenOrientationChange,
-  removeOrientationListener
+  removeOrientationListener,
 } from 'react-native-responsive-screen';
 
 export default class App extends React.Component {
   componentDidMount() {
     listenOrientationChange({classComponentThis: this});
+    this.setState({orientation: currentOrientation()})
   }
 
   componentWillUnMount() {
@@ -21,7 +23,7 @@ export default class App extends React.Component {
     const styles = StyleSheet.create({
       container: {
         flex: 1,
-        backgroundColor: 'gray',
+        backgroundColor: this.state && this.state.orientation === 'landscape' ? 'steelblue' : 'gray',
         alignItems: 'center',
         justifyContent: 'center',
       },
@@ -37,10 +39,16 @@ export default class App extends React.Component {
         color: 'white',
         paddingHorizontal: widthPercentageToDP('10%'),
       },
+      title: {
+        fontSize: widthPercentageToDP('7.5%')
+      }
     });
 
     return (
       <View style={styles.container}>
+        {this.state && this.state.orientation &&
+          <Text style={styles.title}>{this.state.orientation}</Text>
+        }
         <View style={styles.responsiveBox}>
           <Text style={styles.text}>This box is always of 84.5% width and 17% height.</Text>
           <Text style={styles.text}>Test it by running this example repo in phones/
