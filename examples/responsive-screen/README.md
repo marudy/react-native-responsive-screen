@@ -5,10 +5,10 @@ This is an example repository that contains a sample setup of `react-native-resp
 1. Change working directory to the project:
     - `cd examamples/responsive-screen`
 1. Install the dependencies:
-    - `npm install` 
+    - `yarn install`  or  `npm install`
 1. Run the app in the emulator/simulator:
-    - `npm start android`
-    - `npm start ios`
+    - `yarn run android`  or  `npm run android`
+    - `yarn run ios`  or  `npm run ios`
 
 # Usage
 ```javascript
