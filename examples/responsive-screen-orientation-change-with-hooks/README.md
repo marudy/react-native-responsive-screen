@@ -3,7 +3,7 @@ This is an example repository that contains a sample setup of react-native-respo
 # Setup
 
 1. Change working directory to the project:
-    - `cd examamples/responsive-screen-orientation-change-with-hooks`
+    - `cd examples/responsive-screen-orientation-change-with-hooks`
 1. Install the dependencies:
     - `yarn install`  or  `npm install`
 1. Run the app in the emulator/simulator:
