@@ -1,5 +1,15 @@
 This is an example repository that contains a sample setup of `react-native-responsive-screen` package.
 
+# Setup
+
+1. Change working directory to the project:
+    - `cd examples/responsive-screen`
+1. Install the dependencies:
+    - `yarn install`  or  `npm install`
+1. Run the app in the emulator/simulator:
+    - `yarn run android`  or  `npm run android`
+    - `yarn run ios`  or  `npm run ios`
+
 # Usage
 ```javascript
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';

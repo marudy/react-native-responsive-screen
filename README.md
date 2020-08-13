@@ -33,7 +33,7 @@ Check out [this medium article](https://medium.com/react-native-training/build-r
 * You can also provide decimal values to these 2 methods, i.e. `font-size: widthPercentageToDP('3.75%')`.
 * The package methods can be used with or without flex depending on what you want to do and how you choose to implement it.
 * The suggested approach is to start developing from larger screens (i.e. tablets). That way you are less prone to forget adding responsive values for all properties of type `number`. In any case, when your screen development is done, you should test it over a big range of different screens as shown below in the [How do I know it works for all devices ?](#example) section.
-* There are 2 more methods to use if you want to support responsiveness along with orientation change. These are `listenOrientationChange` and `removeOrientationListener`. To see how to use them, check example number 3.
+* There are 3 more methods to use if you want to support responsiveness along with orientation change. These are `currentOrientation`, `listenOrientationChange` and `removeOrientationListener`. To see how to use them, see the two "screen orientation" examples (#2 and #3).
 * You can use this package along with `styled-components`. To see how to do that, check example number 2.
 
 # Updates 🚀
@@ -42,7 +42,9 @@ Check out [this medium article](https://medium.com/react-native-training/build-r
 
 # Examples
 
-## 1. How to use with StyleSheet.create() and without orientation change support 
+## 1. How to use with StyleSheet.create() and without orientation change support
+### See `examples/responsive-screen`
+
 ```javascript
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -75,10 +77,15 @@ You can find a working example of this over the [related example repository](htt
 
 
 ## 2. How to use with StyleSheet.create() and with orientation change support
+### See `examples/responsive-screen-orientation-change`
 Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/blob/master/examples/responsive-screen-orientation-change/README.md)
 
+## 3. Same functionality as Example #2, but using React Hooks
+### See `examples/responsive-screen-orientation-change-with-hooks`
+Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen-with-hooks/blob/master/examples/responsive-screen-orientation-change/README.md)
 
-## 3. How to use with styled components
+## 4. How to use with styled components
+### See `examples/responsive-screen-orientation-styled-components`
 Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/blob/master/examples/responsive-screen-styled-components/README.md)
 
 

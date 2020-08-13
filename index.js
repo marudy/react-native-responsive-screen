@@ -38,24 +38,47 @@ const heightPercentageToDP = heightPercent => {
 };
 
 /**
- * Event listener function that detects orientation change (every time it occurs) and triggers 
+ * Identifies the current orientation of the screen.
+ * @returns {string} 'portrait' or 'landscape'
+ */
+const currentOrientation = () => {
+  return screenWidth < screenHeight ? 'portrait' : 'landscape';
+}
+
+/**
+ * Event listener function that detects orientation change (every time it occurs) and triggers
  * screen rerendering. It does that, by changing the state of the screen where the function is
  * called. State changing occurs for a new state variable with the name 'orientation' that will
  * always hold the current value of the orientation after the 1st orientation change.
  * Invoke it inside the screen's constructor or in componentDidMount lifecycle method.
- * @param {object} that Screen's class component this variable. The function needs it to
- *                      invoke setState method and trigger screen rerender (this.setState()).
+ * NOTE: If using expo, check the "orientation" setting in app.json/app.config.json
+ *       https://docs.expo.io/versions/v38.0.0/config/app/#orientation
+ * @param {object} classComponent This Screen's class component this variable.
+ *                                listenOrientationChange() needs it to invoke the class's setState
+ *                                (this.setState()) method and trigger screen rerender.
+ * @param {object} setStateHook A set-state function, typically from useState().
+ *                              listenOrientationChange() calls it to set the state value and
+ *                              trigger screen rerender.
+ * @throws {Error} If neither or both of the params are set.  Must only set ONE of them.
  */
-const listenOrientationChange = that => {
+const listenOrientationChange = ({classComponentThis = null, setStateHook = null}) => {
   Dimensions.addEventListener('change', newDimensions => {
     // Retrieve and save new dimensions
     screenWidth = newDimensions.window.width;
     screenHeight = newDimensions.window.height;
 
-    // Trigger screen's rerender with a state update of the orientation variable
-    that.setState({
-      orientation: screenWidth < screenHeight ? 'portrait' : 'landscape'
-    });
+    let orientation = {
+      orientation: currentOrientation()
+    };
+
+    // Trigger screen's re-render with a state update of the orientation variable
+    if (classComponentThis !== null && setStateHook === null) {
+      classComponentThis.setState(orientation);
+    } else if (setStateHook !== null && classComponentThis === null) {
+      setStateHook(orientation);
+    } else {
+      throw new Error("Must set only ONE of classComponentThis or setStateHook");
+    }
   });
 };
 
@@ -72,6 +95,7 @@ const removeOrientationListener = () => {
 export {
   widthPercentageToDP,
   heightPercentageToDP,
+  currentOrientation,
   listenOrientationChange,
   removeOrientationListener
 };
