@@ -1,3 +1,6 @@
+# Help with maintenance would be appreciated!
+#### If interested please send me an email: tasos.maroudas@codedlines.com
+
 # Contents
 * [The package](#react-native-responsive-screen)
 * [Installation](#installation)
