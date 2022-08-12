@@ -19,7 +19,8 @@ const widthPercentageToDP = widthPercent => {
 
   // Use PixelRatio.roundToNearestPixel method in order to round the layout
   // size (dp) to the nearest one that correspons to an integer number of pixels.
-  return PixelRatio.roundToNearestPixel(screenWidth * elemWidth / 100);
+  const calculatedWidthDpValue = screenWidth * elemWidth / 100
+  return PixelRatio.roundToNearestPixel(calculatedWidthDpValue);
 };
 
 /**
@@ -34,7 +35,8 @@ const heightPercentageToDP = heightPercent => {
 
   // Use PixelRatio.roundToNearestPixel method in order to round the layout
   // size (dp) to the nearest one that correspons to an integer number of pixels.
-  return PixelRatio.roundToNearestPixel(screenHeight * elemHeight / 100);
+  const calculatedHeightDpValue = screenHeight * elemHeight / 100
+  return PixelRatio.roundToNearestPixel(calculatedHeightDpValue);
 };
 
 /**
@@ -47,7 +49,7 @@ const heightPercentageToDP = heightPercent => {
  *                      invoke setState method and trigger screen rerender (this.setState()).
  */
 const listenOrientationChange = that => {
-  Dimensions.addEventListener('change', newDimensions => {
+  return Dimensions.addEventListener('change', newDimensions => {
     // Retrieve and save new dimensions
     screenWidth = newDimensions.window.width;
     screenHeight = newDimensions.window.height;
@@ -56,6 +58,7 @@ const listenOrientationChange = that => {
     that.setState({
       orientation: screenWidth < screenHeight ? 'portrait' : 'landscape'
     });
+    
   });
 };
 
@@ -66,9 +69,9 @@ const listenOrientationChange = that => {
  * avoid adding new listeners every time the same component is re-mounted.
  */
 const removeOrientationListener = () => {
-  Dimensions.removeEventListener('change', () => {});
+  listenOrientationChange().remove()
 };
-
+ 
 export {
   widthPercentageToDP,
   heightPercentageToDP,
