@@ -1,7 +1,7 @@
 // packages
 import * as React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import { widthPercentageToDP, heightPercentageToDP } from 'react-native-responsive-screen';
+import { widthPercentageToDP, heightPercentageToDP } from 'react-native-responsive-hook';
 import styled from 'styled-components';
  
 export default class App extends React.Component {

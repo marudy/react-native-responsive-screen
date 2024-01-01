@@ -1,8 +1,8 @@
 # Help with maintenance would be appreciated!
-#### If interested please send me an email: tasos.maroudas@codedlines.com
+#### If interested please send me an email: zakriamuhammad3637@gmail.com
 
 # Contents
-* [The package](#react-native-responsive-screen)
+* [The package](#react-native-responsive-hook)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Examples](#examples)
@@ -10,16 +10,14 @@
 * [License](#license)
 * [Pull Requests](#pull)
 
-# react-native-responsive-screen
+# react-native-responsive-hook
 
-[![npm version](https://badge.fury.io/js/react-native-responsive-screen.svg)](https://www.npmjs.com/package/react-native-responsive-screen)
-[![npm](https://img.shields.io/npm/dm/react-native-responsive-screen.svg)]()
+[![npm version](https://badge.fury.io/js/react-native-responsive-hook.svg)](https://www.npmjs.com/package/react-native-responsive-hook)
+[![npm](https://img.shields.io/npm/dm/react-native-responsive-hook.svg)]()
 
-<i>react-native-responsive-screen</i> is a small library that provides 2 simple methods so that React Native developers can code their UI elements fully responsive. No media queries needed.
+<i>react-native-responsive-hook</i> is a small library that provides simple methods so that React Native developers can code their UI elements to be responsive across different devices. No media queries needed. It extends the power of react-native-responsive-screen with custom hooks and additional functionalities including breakpoint detection.
 
-It also provides an optional third method for screen orientation detection and automatic rerendering according to new dimensions.
-
-Give it a try and make your life simpler! 
+Give it a try and make your development process simpler and more efficient!
 
 Check out [this medium article](https://medium.com/react-native-training/build-responsive-react-native-views-for-any-device-and-support-orientation-change-1c8beba5bc23) to see the power of the library! 🚀
 
@@ -27,83 +25,73 @@ Check out [this medium article](https://medium.com/react-native-training/build-r
 
 # Installation
 
-`npm install react-native-responsive-screen --save`
+`npm install react-native-responsive-hook --save`
 
 # Usage
-* After the package has installed, when application loads (in real device and/or emulator), it detects the screen's width and height. I.e. for Samsung A5 2017 model it detects `width: 360DP` and `height: 640DP` (these are the values without taking into account the device's scale factor).
-* The package exposes 2 basic methods: `widthPercentageToDP` and `heightPercentageToDP`. Their names essentially mean that you can supply a "percentage like" string value to each method and it will return the DP (indipendent pixel) that correspond to the supplied percentage of current screen's width/height respectivelly. I.e. for Samsung A5 2017, if we supply to a CSS box: `width: widthPercentageToDP('53%')`, the rendered style will be `width: 190.8` DP. Check example number 1 for how to use them.
-* Methods `widthPercentageToDP` and `heightPercentageToDP` can be used for any style (CSS) property that accepts DP as value. DP values are the ones of type `number` over the props mentioned in RN docs: [View style props](https://facebook.github.io/react-native/docs/view-style-props.html), [Text style props](https://facebook.github.io/react-native/docs/text-style-props.html), [Image style props](https://facebook.github.io/react-native/docs/image-style-props.html), [Layout props](https://facebook.github.io/react-native/docs/layout-props.html) and [Shadow props](https://facebook.github.io/react-native/docs/shadow-props.html). Use the exposed methods for all of the type `number` properties used in your app in order to make your app fully responsive for all screen sizes.
-* You can also provide decimal values to these 2 methods, i.e. `font-size: widthPercentageToDP('3.75%')`.
-* The package methods can be used with or without flex depending on what you want to do and how you choose to implement it.
-* The suggested approach is to start developing from larger screens (i.e. tablets). That way you are less prone to forget adding responsive values for all properties of type `number`. In any case, when your screen development is done, you should test it over a big range of different screens as shown below in the [How do I know it works for all devices ?](#example) section.
-* There are 2 more methods to use if you want to support responsiveness along with orientation change. These are `listenOrientationChange` and `removeOrientationListener`. To see how to use them, check example number 3.
-* You can use this package along with `styled-components`. To see how to do that, check example number 2.
+* Import the `useResponsive` hook from `react-native-responsive-hook`.
+* Use `useResponsive` to get `wp`, `hp`, `isLandscape`, `isPortrait`, and `breakpointGroup`.
+* Apply these values to your component styles for responsive and adaptive UI.
 
 # Updates 🚀
-* `v1.4.0` onwards: The library now has flowtype support. Types should work out of the box, no additional setup needed.
-* `widthPercentageToDP` and `heightPercentageToDP` methods accept numeric values as well from version 1.2.1 onwards. That being said a width of 53% can now be written both `width: widthPercentageToDP('53%')` and `width: widthPercentageToDP(53)`.
+* Latest version supports complete hook functionalities including orientation and breakpoint detection.
 
 # Examples
 
-## 1. How to use with StyleSheet.create() and without orientation change support 
+## How to use `useResponsive` with complete hook functionalities
+
 ```javascript
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { useResponsive } from 'react-native-responsive-hook';
 
-class Login extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.textWrapper}>
-          <Text style={styles.myText}>Login</Text>
-        </View>
+const App = () => {
+  const { isLandscape, wp, hp, breakpointGroup } = useResponsive();
+
+  const styles = getStyles(isLandscape, wp, hp, breakpointGroup);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.responsiveBox}>
+        <Text style={styles.text}>Responsive Box - Adjusts based on orientation and screen size.</Text>
+        <Text style={styles.text}>Current Breakpoint Group: {breakpointGroup}</Text>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  textWrapper: {
-    height: hp('70%'), // 70% of height device screen
-    width: wp('80%')   // 80% of width device screen
+const getStyles = (isLandscape, wp, hp, breakpointGroup) => StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: isLandscape ? 'lightblue' : 'gray',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  myText: {
-    fontSize: hp('5%') // End result looks like the provided UI mockup
+  responsiveBox: {
+    borderWidth: 2,
+    borderColor: 'orange',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    width: wp(84.5),
+    height: hp(17),
+    backgroundColor: breakpointGroup === 'group1' ? 'lightgreen' : 'lightcoral'
+  },
+  text: {
+    color: 'white',
   }
 });
 
-export default Login;
+export default App;
 ```
-You can find a working example of this over the [related example repository](https://github.com/marudy/react-native-responsive-screen/blob/master/examples/responsive-screen/README.md)
-
-
-## 2. How to use with StyleSheet.create() and with orientation change support
-Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/blob/master/examples/responsive-screen-orientation-change/README.md)
-
-
-## 3. How to use with styled components
-Check the README of the [related example repository](https://github.com/marudy/react-native-responsive-screen/blob/master/examples/responsive-screen-styled-components/README.md)
-
 
 # How do I know it works for all devices ?
 
-As mentioned in ["How to Develop Responsive UIs with React Native"](https://medium.com/building-with-react-native/how-to-develop-responsive-uis-with-react-native-1x03-a448097c9503) article, this solution is already in production apps and is tested with a set of Android, iOS emulators of different screen specs, in order to verify that we always have the same end result.
-
-## Example:
-The 4 blue tiles at the bottom half of the screen should take over 98% of the screen’s width in dp and 10% of the screen’s height in dp always:
-
-### Smartphones
-<img src="https://cdn-images-1.medium.com/max/800/1*aoIGDVNrcvIw_4NRqRtHTA.png" />
-<img src="https://cdn-images-1.medium.com/max/800/1*Yl9k-Lxg9jxJ9g00qmRlIA.png" />
-<img src="https://cdn-images-1.medium.com/max/800/1*rE43O18nt4_ECUvXr_fSZA.png" />
-
-### Tablets
-<img src="https://cdn-images-1.medium.com/max/800/1*3uJUPxITidUJAokwB8BokQ.png" />
+The solution is tested across a wide range of devices and ensures consistency in UI components across different screen sizes and orientations.
 
 # License
 
 MIT
 
-# Pull
+# Pull Requests
 
 Pull requests are welcome! Please make the PR to `development` branch though and not `master`. Thanks.
+```

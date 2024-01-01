@@ -1,5 +1,6 @@
 // packages
 import { Dimensions, PixelRatio } from 'react-native';
+import useResponsive from './useResponsiveScreen';
 
 // Retrieve initial screen's width
 let screenWidth = Dimensions.get('window').width;
@@ -73,5 +74,6 @@ export {
   widthPercentageToDP,
   heightPercentageToDP,
   listenOrientationChange,
-  removeOrientationListener
+  removeOrientationListener,
+  useResponsive,
 };

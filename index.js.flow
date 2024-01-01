@@ -2,6 +2,14 @@
 
 import type { Component } from "react";
 
+declare export type UseResponsiveReturnType = {
+  isLandscape: boolean,
+  isPortrait: boolean,
+  wp: (widthPercent: number | string) => number,
+  hp: (heightPercent: number | string) => number,
+  breakpointGroup: string
+};
+
 declare export function widthPercentageToDP(
   widthPercent: string | number
 ): number;
@@ -9,6 +17,8 @@ declare export function widthPercentageToDP(
 declare export function heightPercentageToDP(
   heightPercent: string | number
 ): number;
+
+declare export function useResponsive(): UseResponsiveReturnType;
 
 declare export function listenOrientationChange(
   screenClassComponent: Component<any, any>
